@@ -19,12 +19,71 @@ const computerSpock=document.getElementById('computerSpock');
 const allGameIcons=document.querySelectorAll('.far');
 
 let computerChoice='';
+let playerScoreNumber=0;
+let computerScoreNumber=0;
+
+const choices={
+    rock:{
+        name:'Rock',
+        defeats:['scissors','lizard']
+    },
+    paper:{
+        name:'Paper',
+        defeats:['rock','spock']
+    },
+    scissors:{
+        name:'Scissors',
+        defeats:['paper','lizard']
+    },
+    lizard:{
+        name:'Lizard',
+        defeats:['paper','spock']
+    },
+    spock:{
+        name:'Spock',
+        defeats:['scissors','rock']
+    }
+};
+
+//Compare results,update scores and update the result text
+function updateScore(playerChoice){
+    // console.log(playerChoice,computerChoice);
+    if(playerChoice===computerChoice){
+        resultText.textContent="It's a tie!"
+    }
+    else{
+        const choice=choices[playerChoice];
+        // console.log(choice);
+        // console.log(choice.defeats);
+        // console.log(choice.defeats.indexOf(computerChoice));
+        if(choice.defeats.indexOf(computerChoice)>-1){
+            playerScoreNumber++;
+            resultText.textContent='You Won!';
+            playerScore.textContent=playerScoreNumber;
+        }
+        else{
+            computerScoreNumber++;
+            resultText.textContent='You lost!';
+            computerScore.textContent=computerScoreNumber;
+        }
+    }
+
+}
+
 
 //To remove the 'selected' class for unselected icons (ie. to have the 'selected' class only for the recently clicked icon)
 function resetSelected(){
     allGameIcons.forEach(icon=>{
         icon.classList.remove('selected');
     });
+}
+
+//Call functions to process the turn
+function checkResult(playerChoice){
+    resetSelected();
+    randomComputerChoice();
+    displayComputerChoice();
+    updateScore(playerChoice);
 }
 
 //Randomly select the computer's choice
@@ -52,13 +111,6 @@ function randomComputerChoice(){
             break;
     }
     // console.log(computerChoice);
-}
-
-//Call functions to process the turn
-function checkResult(){
-    resetSelected();
-    randomComputerChoice();
-    displayComputerChoice();
 }
 
 //Add the 'selected' class to the randomised computer's choice
@@ -94,7 +146,7 @@ function displayComputerChoice(){
 //Add 'selected' class to the clicked icon based on user choice
 function select(playerChoice){
     // console.log(playerChoice)
-   checkResult();
+   checkResult(playerChoice);
     switch(playerChoice){
         case 'rock':
             playerRock.classList.add('selected');
