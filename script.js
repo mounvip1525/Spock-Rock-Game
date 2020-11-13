@@ -1,3 +1,5 @@
+import { startConfetti, stopConfetti, removeConfetti } from './confetti.js';
+
 const playerScore=document.getElementById('player-score');
 const playerChoiceEl=document.getElementById('player-choice');
 const computerScore=document.getElementById('computer-score');
@@ -21,6 +23,7 @@ const allGameIcons=document.querySelectorAll('.far');
 let computerChoice='';
 let playerScoreNumber=0;
 let computerScoreNumber=0;
+let computerChoiceNumber=0;
 
 const choices={
     rock:{
@@ -54,6 +57,7 @@ function resetAll(){
     resultText.textContent="Let's Play!";
     resetSelected();
 }
+window.resetAll=resetAll;
 
 //Compare results,update scores and update the result text
 function updateScore(playerChoice){
@@ -70,6 +74,7 @@ function updateScore(playerChoice){
             playerScoreNumber++;
             resultText.textContent='You Won!';
             playerScore.textContent=playerScoreNumber;
+            startConfetti();
         }
         else{
             computerScoreNumber++;
@@ -86,6 +91,8 @@ function resetSelected(){
     allGameIcons.forEach(icon=>{
         icon.classList.remove('selected');
     });
+    stopConfetti();
+    removeConfetti();
 }
 
 //Call functions to process the turn
@@ -182,7 +189,9 @@ function select(playerChoice){
             break;
     }
 }
+window.select=select;
 
 //Set initial values on load
 resetAll();
+
 
