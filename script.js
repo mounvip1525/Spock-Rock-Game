@@ -45,6 +45,16 @@ const choices={
     }
 };
 
+//Reset player and computer's choices and scores
+function resetAll(){
+    playerScore.textContent=0;
+    computerScore.textContent=0;
+    playerChoiceEl.textContent='';
+    computerChoiceEl.textContent='';
+    resultText.textContent="Let's Play!";
+    resetSelected();
+}
+
 //Compare results,update scores and update the result text
 function updateScore(playerChoice){
     // console.log(playerChoice,computerChoice);
@@ -63,7 +73,7 @@ function updateScore(playerChoice){
         }
         else{
             computerScoreNumber++;
-            resultText.textContent='You lost!';
+            resultText.textContent='You lost:(';
             computerScore.textContent=computerScoreNumber;
         }
     }
@@ -172,4 +182,7 @@ function select(playerChoice){
             break;
     }
 }
+
+//Set initial values on load
+resetAll();
 
