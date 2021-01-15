@@ -13,21 +13,30 @@
         <div class="header">
             <h1>Rock Paper Scissors Lizard Spock</h1>
         </div>
+        <div class="score">
+            <div class="score-cont">
+                <h2 class="score-h2"><span id="player-score"></span>&nbsp;:&nbsp;<span id="computer-score"></span></h2>
+            </div>
+        </div>
         <div class="player-container" id="player">
-            <h2>You - <span id="player-score"></span><span class="choice" id="player-choice" ></span></h2>
-            <i class="far fa-hand-rock" id="playerRock" title='Rock' onclick="select('rock')"></i>
-            <i class="far fa-hand-paper" id="playerPaper" title='Paper' onclick="select('paper')"></i>
-            <i class="far fa-hand-scissors" id="playerScissors" title='Scissors' onclick="select('scissors')"></i>
-            <i class="far fa-hand-lizard" id="playerLizard" title='Lizard' onclick="select('lizard')"></i>
-            <i class="far fa-hand-spock" id="playerSpock" title='Spock' onclick="select('spock')"></i>
+            <h2>You </span><span class="choice" id="player-choice" ></span></h2>
+            <div class='icons'>
+                <i class="far fa-hand-rock" id="playerRock" title='Rock' onclick="select('rock')"></i>
+                <i class="far fa-hand-paper" id="playerPaper" title='Paper' onclick="select('paper')"></i>
+                <i class="far fa-hand-scissors" id="playerScissors" title='Scissors' onclick="select('scissors')"></i>
+                <i class="far fa-hand-lizard" id="playerLizard" title='Lizard' onclick="select('lizard')"></i>
+                <i class="far fa-hand-spock" id="playerSpock" title='Spock' onclick="select('spock')"></i>
+            </div>
         </div>
         <div class="player-container" id="computer">
-            <h2>Computer - <span id="computer-score"></span><span class="choice" id="computer-choice" ></span></h2>
+            <h2>Computer </span><span class="choice" id="computer-choice" ></span></h2>
+           <div class='icons'>
             <i class="far fa-hand-rock" id="computerRock" title='Rock'></i>
             <i class="far fa-hand-paper" id="computerPaper" title='Paper'></i>
             <i class="far fa-hand-scissors" id="computerScissors" title='Scissors'></i>
             <i class="far fa-hand-lizard" id="computerLizard" title='Lizard'></i>
             <i class="far fa-hand-spock" id="computerSpock" title='Spock'></i>
+           </div>
         </div>
         <i class="fas fa-sync-alt reset-icon" title="Reset" onclick='resetAll()'></i>
         <div class="result-container">
